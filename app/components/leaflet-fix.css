@@ -1,0 +1,36 @@
+/* Fix for Leaflet marker icons in Next.js */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Ensure popup is above markers */
+.leaflet-popup-pane {
+  z-index: 700;
+}
+
+/* Smooth marker transitions */
+.leaflet-marker-icon {
+  transition: transform 0.3s ease-out;
+}
+
+/* Custom popup styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.leaflet-popup-content {
+  margin: 8px 12px;
+  font-family: inherit;
+}
+
+/* Remove default marker shadow for custom icons */
+.custom-marker + .leaflet-marker-shadow {
+  display: none;
+}

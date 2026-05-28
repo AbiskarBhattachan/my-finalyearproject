@@ -75,7 +75,12 @@ export default function SignupPage() {
       }
 
       if (data.user) {
-        // Successfully signed up
+        // Write full_name to profiles table immediately (don't rely solely on trigger)
+        await supabase
+          .from('profiles')
+          .update({ full_name: formData.name.trim() })
+          .eq('id', data.user.id);
+
         router.push('/home');
       }
     } catch (err) {

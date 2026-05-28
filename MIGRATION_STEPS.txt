@@ -1,0 +1,106 @@
+═══════════════════════════════════════════════════════════════════
+  🚨 FIX: "Could not find the 'latitude' column" Error
+═══════════════════════════════════════════════════════════════════
+
+PROBLEM:
+--------
+The database doesn't have the location columns yet.
+You need to run the SQL migration to add them.
+
+SOLUTION (3 Simple Steps):
+---------------------------
+
+┌─────────────────────────────────────────────────────────────────┐
+│ STEP 1: Open Supabase SQL Editor                               │
+└─────────────────────────────────────────────────────────────────┘
+
+1. Go to: https://supabase.com/dashboard
+2. Select your project
+3. Click "SQL Editor" in the left sidebar
+4. Click "New query" button
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ STEP 2: Copy & Paste the Migration SQL                         │
+└─────────────────────────────────────────────────────────────────┘
+
+Open this file in your project:
+   📁 supabase/add_location_tracking.sql
+
+Copy ALL the content (Ctrl+A, Ctrl+C)
+Paste it into the Supabase SQL Editor
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ STEP 3: Run the Query                                          │
+└─────────────────────────────────────────────────────────────────┘
+
+1. Click the "RUN" button (bottom right)
+   OR press Ctrl+Enter (Windows) / Cmd+Enter (Mac)
+
+2. Wait for success message:
+   ✅ "Success. No rows returned"
+
+3. Done! The columns are now added.
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ VERIFY IT WORKED                                                │
+└─────────────────────────────────────────────────────────────────┘
+
+Run this query in SQL Editor:
+
+    SELECT column_name 
+    FROM information_schema.columns 
+    WHERE table_name = 'profiles' 
+    AND column_name IN ('latitude', 'longitude');
+
+Expected result:
+    latitude
+    longitude
+
+If you see these two columns, it worked! ✅
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ NOW TEST YOUR APP                                               │
+└─────────────────────────────────────────────────────────────────┘
+
+1. Go back to your delivery rider page
+2. Click "Update My Location" button
+3. Allow location permissions when browser asks
+4. Location should update successfully! 🎉
+
+
+═══════════════════════════════════════════════════════════════════
+  WHAT IF IT STILL DOESN'T WORK?
+═══════════════════════════════════════════════════════════════════
+
+Check these:
+
+□ Did you run the ENTIRE SQL file? (Not just part of it)
+□ Did you see "Success" message in Supabase?
+□ Is your browser allowing location permissions?
+□ Are you logged in as a delivery rider?
+□ Check browser console (F12) for error messages
+
+
+═══════════════════════════════════════════════════════════════════
+  QUICK TEST (No Database Required)
+═══════════════════════════════════════════════════════════════════
+
+Visit: http://localhost:3000/map-demo
+
+This page works without any database data and shows if the map
+component is working correctly.
+
+
+═══════════════════════════════════════════════════════════════════
+  NEED MORE HELP?
+═══════════════════════════════════════════════════════════════════
+
+See detailed documentation:
+  📄 RUN_THIS_MIGRATION.md
+  📄 DELIVERY_MAP_README.md
+  📄 QUICK_START_MAP.md
+

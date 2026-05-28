@@ -60,36 +60,29 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 flex items-center justify-center py-12 px-4">
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-8">
           <Link href="/">
-            <h1 className="text-3xl font-bold text-orange-600 mb-4">
-              Thakali Express
-            </h1>
+            <h1 className="text-4xl font-bold text-orange-600 mb-2">Thakali Express</h1>
           </Link>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-            Welcome Back
-          </h2>
-          <p className="text-gray-600">Sign in to your account</p>
+          <h2 className="text-2xl font-bold text-gray-900 mt-4">Welcome Back</h2>
+          <p className="text-gray-500 mt-1">Sign in to your account</p>
         </div>
 
         {/* Login Form */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <form onSubmit={handleSubmit}>
+        <div className="bg-white rounded-2xl shadow-xl p-8">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {error && (
-              <div className="bg-red-100 border border-red-300 text-red-700 px-4 py-2 rounded mb-4">
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}
 
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm text-gray-700 mb-1"
-              >
-                Email
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email Address
               </label>
               <input
                 id="email"
@@ -99,16 +92,13 @@ export default function LoginPage() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-orange-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
                 placeholder="your@email.com"
               />
             </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block text-sm text-gray-700 mb-1"
-              >
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 Password
               </label>
               <input
@@ -119,30 +109,24 @@ export default function LoginPage() {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-orange-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
                 placeholder="••••••••"
               />
             </div>
 
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
                 <input
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="mr-2"
+                  className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
                 />
-                <label
-                  htmlFor="remember-me"
-                  className="text-sm text-gray-700"
-                >
+                <label htmlFor="remember-me" className="text-sm text-gray-600">
                   Remember me
                 </label>
               </div>
-              <Link
-                href="/forgot-password"
-                className="text-sm text-orange-600 hover:underline"
-              >
+              <Link href="/forgot-password" className="text-sm text-orange-600 hover:text-orange-500 font-medium">
                 Forgot password?
               </Link>
             </div>
@@ -150,31 +134,34 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2 px-4 bg-orange-600 text-white rounded hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 px-4 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
             >
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-gray-200">
-            <p className="text-center text-sm text-gray-600 mb-4">
-              Don't have an account?
-            </p>
-            <Link
-              href="/signup"
-              className="block w-full text-center py-2 px-4 border border-orange-600 text-orange-600 rounded hover:bg-orange-50"
-            >
-              Create New Account
-            </Link>
+          <div className="mt-6">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-200" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-3 bg-white text-gray-500">Don&apos;t have an account?</span>
+              </div>
+            </div>
+            <div className="mt-4">
+              <Link
+                href="/signup"
+                className="block w-full text-center py-3 px-4 border-2 border-orange-600 text-orange-600 rounded-lg font-semibold hover:bg-orange-50 transition-colors"
+              >
+                Create New Account
+              </Link>
+            </div>
           </div>
         </div>
 
-        {/* Back to Home */}
         <div className="text-center mt-6">
-          <Link
-            href="/"
-            className="text-sm text-gray-600 hover:text-orange-600"
-          >
+          <Link href="/" className="text-sm text-gray-500 hover:text-orange-600 transition-colors">
             ← Back to Home
           </Link>
         </div>
